@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>MycoManager 🍄</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+  <!-- LANDING -->
+  <div id="screen-landing" class="screen active">
+    <div class="landing-container">
+	
+      <div class="landing-logo">
+		<img 
+  src="https://i.ibb.co/7JMDjVmq/logo.png" 
+  alt="logo" 
+  class="logo-img"
+  width="300px"
+  height="300px"
+/>
+
+      </div>
+      <br></br><br></br>
+      <!--<h1 class="landing-title">MycoManager</h1>-->
+      <p class="landing-subtitle">
+        Il tuo assistente AI per coltivazione di funghi gourmet e medicinali.
+      </p>
+
+      <div class="landing-description">
+        Ottimizza workflow, ricette, attrezzature e risolvi problemi tecnici con un assistente progettato per coltivatori come te.
+      </div>
+
+      <button id="goToAuthBtn" class="primary-button big">
+        Iniziamo 🌱
+      </button>
+    </div>
+  </div>
+
+  <!-- AUTH -->
+  <div id="screen-auth" class="screen">
+    <div class="auth-container">
+      <div class="landing-logo">
+      <img 
+  src="https://i.ibb.co/7JMDjVmq/logo.png" 
+  alt="logo" 
+  class="logo-img"
+  width="300px"
+  height="300px"
+/></div><br></br><br></br>
+      <!--<h2 class="auth-title">Accedi a MycoManager</h2>-->
+      <p class="auth-subtitle">
+        Registrati o accedi al tuo account.
+      </p>
+
+      <div id="authMessage" class="auth-message hidden"></div>
+
+      <div class="auth-form">
+        <label class="auth-label">
+          Email:
+          <input type="email" id="authEmail" placeholder="nome@esempio.com" />
+        </label>
+
+        <label class="auth-label">
+          Password:
+          <input type="password" id="authPassword" placeholder="Almeno 6 caratteri" />
+        </label>
+
+        <div class="auth-buttons">
+          <button id="authRegisterBtn" class="primary-button">Registrati</button>
+          <button id="authLoginBtn" class="secondary-button">Login</button>
+        </div>
+
+        <button id="backToLandingBtn" class="text-button">⬅ Torna alla home</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING -->
+  <div id="screen-onboarding" class="screen">
+    <div class="onboarding-container">
+
+      <!-- TITOLO + BOTTONE PICCOLO -->
+      <div class="onboarding-header">
+        <h2 class="onboarding-title">Conosciamoci meglio 🍄</h2>
+
+        <button id="goToDashboardBtn" class="small-dashboard-btn hidden">
+          Oppure vai alla Dashboard 🍄
+        </button>
+
+        <p class="onboarding-subtitle">
+          Rispondi a poche domande per personalizzare la tua esperienza.
+        </p>
+      </div>
+
+      <div id="onboardingChat" class="onboarding-chat"></div>
+
+      <form id="onboardingForm" class="onboarding-input-area">
+        <textarea id="onboardingInput" rows="1" placeholder="Scrivi la tua risposta..."></textarea>
+        <button type="submit" id="onboardingSend" class="send-button">➤</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="screen-dashboard" class="screen">
+    <div class="app-root">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <header class="sidebar-header">
+          <div class="app-logo-wrap">
+            <div class="landing-logo">
+      <img 
+  src="https://i.ibb.co/7JMDjVmq/logo.png" 
+  alt="logo" 
+  class="logo-img"
+  width="180px"
+  height="180px"
+/></div>
+            <!--<div class="app-info">
+              <div class="app-name">MycoManager</div>
+              <div class="app-tagline">Grow Room AI</div>
+            </div>-->
+          </div><br></br>
+
+          <button id="newChatBtn" class="primary-button small">➕ Nuova consulenza</button>
+          <button id="clearHistoryBtn" class="danger-button small">🗑️ Pulisci storico</button>
+          <button id="logoutBtn" class="secondary-button small">🚪 Logout</button>
+        </header>
+
+        <div id="conversationsList" class="conversations-list"></div>
+      </aside>
+
+      <!-- MAIN -->
+      <div class="main-pane">
+        <header class="main-header">
+          <div class="main-title">
+            <span id="currentChatEmoji">🌱</span>
+            <div>
+              <div id="currentChatTitle" class="main-chat-title">Nuova consulenza micologica</div>
+              <div class="main-chat-subtitle">Descrivi il tuo setup o il tuo problema.</div>
+            </div>
+          </div>
+
+          <div class="main-controls">
+            <select id="modelSelect" class="model-select">
+              <option value="claude-sonnet-4-20250514">Claude Sonnet 4.5</option>
+              <option value="claude-haiku-4-20250514">Claude Haiku 4.5</option>
+              <option value="claude-opus-4-20250514">Claude Opus 4.5</option>
+            </select>
+          </div>
+        </header>
+
+        <main id="chatContainer" class="chat-container"></main>
+
+        <form id="messageForm" class="input-area">
+          <textarea id="userInput" rows="1" placeholder="Es: Come ottimizzare la mia LC?"></textarea>
+          <button type="submit" id="sendButton" class="send-button">➤</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+
+</body>
+</html>
