@@ -593,18 +593,55 @@ body {
   border-radius: 999px;
 }
 
-/* MOBILE */
+/* ------------------------------
+   SIDEBAR MOBILE (menu a comparsa)
+------------------------------ */
 
+.mobile-menu-btn {
+  display: none;
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: var(--neon-green);
+  cursor: pointer;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  z-index: 9;
+}
+
+/* Mobile */
 @media (max-width: 800px) {
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
   .sidebar {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: -260px; /* nascosta */
+    width: 220px;
+    height: 100vh;
+    background: var(--grow-panel);
+    border-right: 1px solid var(--grow-border);
+    z-index: 10;
+    transition: left 0.25s ease;
   }
 
-  .app-root {
-    max-width: 100%;
+  .sidebar.open {
+    left: 0;
   }
 
-  .input-area {
-    max-width: 100%;
+  .sidebar-overlay.show {
+    display: block;
   }
 }
+
